@@ -26,6 +26,20 @@ jobs:
           FTP_HOST="$(printf '%s' "$FTP_HOST" | tr -d '\r\n\t ')"
           FTP_USER="$(printf '%s' "$FTP_USER" | tr -d '\r\n\t ')"
           export LFTP_PASSWORD="$(printf '%s' "$FTP_PASS" | tr -d '\r\n')"
+          if ! getent hosts "$FTP_HOST" >/dev/null 2>&1; then
+            echo "DNS runnera nie zna $FTP_HOST - pobieram IP przez DoH"
+            DOH_IP="$(curl -s -m 15 "https://dns.google/resolve?name=$FTP_HOST&type=A" | grep -o '"data":"[0-9.]*"' | head -1 | cut -d'"' -f4)"
+            if [ -z "$DOH_IP" ]; then
+              DOH_IP="$(curl -s -m 15 "https://cloudflare-dns.com/dns-query?name=$FTP_HOST&type=A" -H "accept: application/dns-json" | grep -o '"data":"[0-9.]*"' | head -1 | cut -d'"' -f4)"
+            fi
+            if [ -n "$DOH_IP" ]; then
+              echo "Uzywam IP: $DOH_IP"
+              FTP_HOST="$DOH_IP"
+            else
+              echo "DoH tez nie zwrocil IP - probuje awaryjnie 188.210.222.1"
+              FTP_HOST="188.210.222.1"
+            fi
+          fi
           lftp -e "
             set cmd:fail-exit true;
             set ftp:ssl-allow off;
