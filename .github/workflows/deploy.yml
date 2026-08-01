@@ -19,7 +19,7 @@ jobs:
 
       - name: Sync files
         env:
-          FTP_HOST: ${{ secrets.REMOTE_HOST }}
+          FTP_HOST: h50.seohost.pl
           FTP_USER: ${{ secrets.REMOTE_USER }}
           FTP_PASS: ${{ secrets.REMOTE_PASSWORD }}
         run: |
