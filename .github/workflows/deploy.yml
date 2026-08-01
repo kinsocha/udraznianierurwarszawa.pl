@@ -25,16 +25,18 @@ jobs:
         run: |
           FTP_HOST="$(printf '%s' "$FTP_HOST" | tr -d '\r\n\t ')"
           FTP_USER="$(printf '%s' "$FTP_USER" | tr -d '\r\n\t ')"
-          FTP_PASS="$(printf '%s' "$FTP_PASS" | tr -d '\r\n')"
-          lftp -u "$FTP_USER,$FTP_PASS" -e "
+          export LFTP_PASSWORD="$(printf '%s' "$FTP_PASS" | tr -d '\r\n')"
+          lftp -e "
+            set cmd:fail-exit true;
             set ftp:ssl-allow off;
             set net:max-retries 3;
             set net:persist-retries 3;
             set net:timeout 30;
+            open --env-password -u \"$FTP_USER\" \"$FTP_HOST\";
             echo '--- zawartosc serwera PRZED ---';
             cls -la;
             mirror -R --verbose --delete -x ^\.git/ -x ^\.github/ -x ^cgi-bin/ ./ ./;
             echo '--- zawartosc serwera PO ---';
             cls -la;
             bye
-          " "$FTP_HOST"
+          "
