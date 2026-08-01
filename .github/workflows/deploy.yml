@@ -12,16 +12,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install lftp
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y lftp
+
       - name: Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          password: ${{ secrets.REMOTE_PASSWORD }}
-          local-dir: ./
-          server-dir: ./
-          timeout: 60000
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/README.md
+        env:
+          FTP_HOST: ${{ secrets.REMOTE_HOST }}
+          FTP_USER: ${{ secrets.REMOTE_USER }}
+          FTP_PASS: ${{ secrets.REMOTE_PASSWORD }}
+        run: |
+          lftp -u "$FTP_USER,$FTP_PASS" -e "
+            set ftp:ssl-allow off;
+            set net:max-retries 3;
+            set net:persist-retries 3;
+            set net:timeout 30;
+            echo '--- zawartosc serwera PRZED ---';
+            cls -la;
+            mirror -R --verbose --delete -x ^\.git/ -x ^\.github/ -x ^cgi-bin/ ./ ./;
+            echo '--- zawartosc serwera PO ---';
+            cls -la;
+            bye
+          " "$FTP_HOST"
