@@ -359,7 +359,7 @@ a {
 
 .footer-content {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 34px;
   font-size: 0.95rem;
 }
