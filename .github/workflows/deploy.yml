@@ -23,6 +23,9 @@ jobs:
           FTP_USER: ${{ secrets.REMOTE_USER }}
           FTP_PASS: ${{ secrets.REMOTE_PASSWORD }}
         run: |
+          FTP_HOST="$(printf '%s' "$FTP_HOST" | tr -d '\r\n\t ')"
+          FTP_USER="$(printf '%s' "$FTP_USER" | tr -d '\r\n\t ')"
+          FTP_PASS="$(printf '%s' "$FTP_PASS" | tr -d '\r\n')"
           lftp -u "$FTP_USER,$FTP_PASS" -e "
             set ftp:ssl-allow off;
             set net:max-retries 3;
