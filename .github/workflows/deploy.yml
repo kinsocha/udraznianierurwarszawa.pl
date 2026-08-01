@@ -1,0 +1,27 @@
+name: Deploy site to Seohost (FTP)
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          local-dir: ./
+          server-dir: ./public_html/
+          timeout: 60000
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/README.md
