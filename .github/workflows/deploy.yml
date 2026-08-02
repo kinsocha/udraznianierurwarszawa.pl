@@ -39,9 +39,12 @@ jobs:
             set cmd:fail-exit true;
             set dns:use-fork no;
             set ftp:ssl-allow off;
-            set net:max-retries 3;
-            set net:persist-retries 3;
-            set net:timeout 30;
+            set net:max-retries 2;
+            set net:persist-retries 0;
+            set net:timeout 20;
+            set net:reconnect-interval-base 5;
+            set net:reconnect-interval-max 10;
+            debug 4;
             open --env-password -u \"$FTP_USER\" \"$FTP_HOST\";
             echo '--- zawartosc serwera PRZED ---';
             cls -la;
