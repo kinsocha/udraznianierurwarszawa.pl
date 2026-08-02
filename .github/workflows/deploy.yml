@@ -35,12 +35,12 @@ jobs:
           fi
           echo "Lacze z $FTP_HOST przez IP: $FTP_IP"
           FTP_HOST="$FTP_IP"
-          lftp -e "
+          timeout --signal=KILL 120 lftp -e "
             set cmd:fail-exit true;
             set dns:use-fork no;
             set ftp:ssl-allow off;
             set net:max-retries 2;
-            set net:persist-retries 0;
+            set net:persist-retries 2;
             set net:timeout 20;
             set net:reconnect-interval-base 5;
             set net:reconnect-interval-max 10;
