@@ -37,6 +37,7 @@ jobs:
           FTP_HOST="$FTP_IP"
           lftp -e "
             set cmd:fail-exit true;
+            set dns:use-fork no;
             set ftp:ssl-allow off;
             set net:max-retries 3;
             set net:persist-retries 3;
