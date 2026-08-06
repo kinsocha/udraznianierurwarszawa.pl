@@ -1,0 +1,39 @@
+name: Usun pliki strony z serwera (jednorazowo)
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test logowania FTP
+        env:
+          FTP_HOST: h50.seohost.pl
+          FTP_USER: ${{ secrets.REMOTE_USER }}
+          FTP_PASS: ${{ secrets.REMOTE_PASSWORD }}
+        run: |
+          FTP_USER="$(printf '%s' "$FTP_USER" | tr -d '\r\n\t ')"
+          FTP_PASS="$(printf '%s' "$FTP_PASS" | tr -d '\r\n')"
+          curl -sS --connect-timeout 15 --max-time 30 --list-only --user "$FTP_USER:$FTP_PASS" "ftp://$FTP_HOST/"
+          echo "LOGOWANIE OK"
+
+      - name: Kasowanie plikow strony
+        env:
+          FTP_HOST: h50.seohost.pl
+          FTP_USER: ${{ secrets.REMOTE_USER }}
+          FTP_PASS: ${{ secrets.REMOTE_PASSWORD }}
+        run: |
+          FTP_USER="$(printf '%s' "$FTP_USER" | tr -d '\r\n\t ')"
+          FTP_PASS="$(printf '%s' "$FTP_PASS" | tr -d '\r\n')"
+          for f in index.html css/style.css img/placeholder-hero.svg img/placeholder-autor.svg; do
+            echo "DELE $f"
+            curl -sS --connect-timeout 15 --max-time 30 --user "$FTP_USER:$FTP_PASS" -Q "DELE $f" --list-only "ftp://$FTP_HOST/" > /dev/null || echo "  (nie udalo sie / brak pliku)"
+          done
+          for d in css img; do
+            echo "RMD $d"
+            curl -sS --connect-timeout 15 --max-time 30 --user "$FTP_USER:$FTP_PASS" -Q "RMD $d" --list-only "ftp://$FTP_HOST/" > /dev/null || echo "  (nie udalo sie / brak katalogu)"
+          done
+          echo "--- zawartosc katalogu po kasowaniu ---"
+          curl -sS --connect-timeout 15 --max-time 30 --list-only --user "$FTP_USER:$FTP_PASS" "ftp://$FTP_HOST/"
