@@ -1,8 +1,8 @@
 name: Deploy site to Seohost (FTP)
 
 on:
-  push:
-    branches: ["main"]
+  # Wylaczone automatyczne wdrazanie po push (2026-08-06) - praca tylko na localhost.
+  # Wdrozenie mozliwe wylacznie recznie: zakladka Actions -> Run workflow.
   workflow_dispatch:
 
 jobs:
