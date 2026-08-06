@@ -6,7 +6,7 @@ if (-not (Test-Path $hasloPlik)) {
   exit 1
 }
 $haslo = (Get-Content $hasloPlik -Raw).Trim()
-$user = "githubudraznianierurwarszawa@xn--udranianierurwarszawa-sse.pl"
+$user = "githubxn--udranianierurwarszawa-sse@srv78381.seohost.com.pl"
 $hostFtp = "h50.seohost.pl"
 
 $pliki = @(
