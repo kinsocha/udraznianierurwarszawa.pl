@@ -12,44 +12,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install lftp
-        run: |
-          sudo apt-get -qq update
-          sudo apt-get -qq install -y lftp
-
       - name: Sync files
         env:
           FTP_HOST: h50.seohost.pl
           FTP_USER: ${{ secrets.REMOTE_USER }}
           FTP_PASS: ${{ secrets.REMOTE_PASSWORD }}
         run: |
-          FTP_HOST="$(printf '%s' "$FTP_HOST" | tr -d '\r\n\t ')"
           FTP_USER="$(printf '%s' "$FTP_USER" | tr -d '\r\n\t ')"
-          export LFTP_PASSWORD="$(printf '%s' "$FTP_PASS" | tr -d '\r\n')"
-          FTP_IP="$(getent ahostsv4 "$FTP_HOST" 2>/dev/null | awk '{print $1; exit}')"
-          if [ -z "$FTP_IP" ]; then
-            FTP_IP="$(curl -s -m 15 "https://dns.google/resolve?name=$FTP_HOST&type=A" | grep -o '"data":"[0-9.]*"' | head -1 | cut -d'"' -f4)"
-          fi
-          if [ -z "$FTP_IP" ]; then
-            FTP_IP="188.210.222.1"
-          fi
-          echo "Lacze z $FTP_HOST przez IP: $FTP_IP"
-          FTP_HOST="$FTP_IP"
-          timeout --signal=KILL 120 lftp -e "
-            set cmd:fail-exit true;
-            set dns:use-fork no;
-            set ftp:ssl-allow off;
-            set net:max-retries 2;
-            set net:persist-retries 2;
-            set net:timeout 20;
-            set net:reconnect-interval-base 5;
-            set net:reconnect-interval-max 10;
-            debug 4;
-            open --env-password -u \"$FTP_USER\" \"$FTP_HOST\";
-            echo '--- zawartosc serwera PRZED ---';
-            cls -la;
-            mirror -R --verbose --delete -x ^\.git/ -x ^\.github/ -x ^cgi-bin/ ./ ./;
-            echo '--- zawartosc serwera PO ---';
-            cls -la;
-            bye
-          "
+          FTP_PASS="$(printf '%s' "$FTP_PASS" | tr -d '\r\n')"
+          ok=0
+          blad=0
+          while IFS= read -r f; do
+            rel="${f#./}"
+            echo "Wysylam: $rel"
+            if curl -sS --connect-timeout 15 --max-time 120 --retry 3 --retry-delay 5 \
+                 --ftp-create-dirs -T "$f" \
+                 --user "$FTP_USER:$FTP_PASS" \
+                 "ftp://$FTP_HOST/$rel"; then
+              ok=$((ok+1))
+            else
+              echo "BLAD przy $rel"
+              blad=$((blad+1))
+            fi
+          done < <(find . -type f ! -path "./.git/*" ! -path "./.github/*" ! -name ".gitignore" ! -name "deploy-lokalny.ps1" ! -name "ftp-haslo.txt")
+          echo "Wyslane: $ok, bledy: $blad"
+          [ "$blad" -eq 0 ]
