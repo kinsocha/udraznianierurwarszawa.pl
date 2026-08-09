@@ -108,16 +108,16 @@ a {
 }
 
 .main-menu a.menu-cta {
-  background: var(--accent);
-  color: var(--white);
+  background: #ff8a00;
+  color: #333333;
   font-weight: 700;
   padding: 9px 24px;
   border-radius: 999px;
 }
 
 .main-menu a.menu-cta:hover {
-  background: #1d4ed8;
-  color: var(--white);
+  background: #f07d00;
+  color: #333333;
 }
 
 .section-grid {
