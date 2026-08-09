@@ -229,6 +229,15 @@ a {
   gap: 44px;
 }
 
+.equip-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
 .equip-list {
   list-style: none;
 }
