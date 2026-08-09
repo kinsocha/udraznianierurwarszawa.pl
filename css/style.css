@@ -222,6 +222,24 @@ a {
   object-fit: cover;
 }
 
+.equip-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 44px;
+}
+
+.equip-list {
+  list-style: none;
+}
+
+.equip-list li {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.6;
+}
+
 .round-photo {
   width: 320px;
   height: 320px;
@@ -434,6 +452,19 @@ address {
   .round-photo {
     width: 250px;
     height: 250px;
+  }
+
+  .equip-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .equip-list {
+    text-align: center;
+  }
+
+  .equip-list li {
+    font-size: 1.35rem;
   }
 }
 
