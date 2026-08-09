@@ -132,6 +132,10 @@ a {
   align-items: center;
 }
 
+.hero-text {
+  align-self: start;
+}
+
 .accented-header {
   font-size: 1.8rem;
   line-height: 1.25;
