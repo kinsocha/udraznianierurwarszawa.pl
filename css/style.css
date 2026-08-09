@@ -58,9 +58,10 @@ a {
 }
 
 .site-header {
-  background: var(--dark);
-  color: var(--white);
+  background: var(--white);
+  color: var(--dark);
   padding: 22px 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .header-bar {
@@ -79,12 +80,12 @@ a {
 }
 
 .logo-accent {
-  color: #7fb2ff;
+  color: var(--accent);
 }
 
 .site-header hgroup p {
   font-size: 0.9rem;
-  color: #cbd5e1;
+  color: var(--muted);
   margin-top: 2px;
 }
 
@@ -96,14 +97,27 @@ a {
 }
 
 .main-menu a {
-  color: #e2e8f0;
+  color: var(--dark);
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
 }
 
 .main-menu a:hover {
-  color: #7fb2ff;
+  color: var(--accent);
+}
+
+.main-menu a.menu-cta {
+  background: #ff8a00;
+  color: #333333;
+  font-weight: 700;
+  padding: 9px 24px;
+  border-radius: 999px;
+}
+
+.main-menu a.menu-cta:hover {
+  background: #f07d00;
+  color: #333333;
 }
 
 .section-grid {
