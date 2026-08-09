@@ -1,8 +1,9 @@
 name: Deploy site to Seohost (FTP)
 
 on:
-  # Wylaczone automatyczne wdrazanie po push (2026-08-06) - praca tylko na localhost.
-  # Wdrozenie mozliwe wylacznie recznie: zakladka Actions -> Run workflow.
+  # Automatyczne wdrazanie po push wlaczone ponownie 2026-08-09.
+  push:
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
@@ -34,6 +35,6 @@ jobs:
               echo "BLAD przy $rel"
               blad=$((blad+1))
             fi
-          done < <(find . -type f ! -path "./.git/*" ! -path "./.github/*" ! -name ".gitignore" ! -name "deploy-lokalny.ps1" ! -name "ftp-haslo.txt")
+          done < <(find . -type f ! -path "./.git/*" ! -path "./.github/*" ! -path "./.claude/*" ! -name "CLAUDE.md" ! -name ".gitignore" ! -name "deploy-lokalny.ps1" ! -name "ftp-haslo.txt")
           echo "Wyslane: $ok, bledy: $blad"
           [ "$blad" -eq 0 ]

@@ -9,9 +9,9 @@
 
 ## Deploy
 
-- Deployment przez GitHub Actions jest WYŁĄCZONY. Publikacja wyłącznie lokalnym skryptem `deploy-lokalny.ps1` (curl FTP na h50.seohost.pl).
-- Hasło FTP w pliku `ftp-haslo.txt` (jest w `.gitignore`, nie commitować, nie wypisywać zawartości).
-- UWAGA: skrypt ma listę plików wpisaną NA SZTYWNO. Po dodaniu nowego pliku (zdjęcie, podstrona) trzeba dopisać go do tablicy `$pliki` w `deploy-lokalny.ps1` – inaczej nie trafi na serwer.
+- **Automatyczny** – jak w udraznianiekanalizacji.eu: po `git push` na main workflow `.github/workflows/deploy.yml` wysyła wszystkie pliki repo przez FTP na h50.seohost.pl (włączone ponownie 09.08.2026). Sekrety `REMOTE_USER` i `REMOTE_PASSWORD` w ustawieniach repo na GitHubie.
+- Workflow NIE wysyła: `.git`, `.github`, `.claude`, `CLAUDE.md`, `.gitignore`, `deploy-lokalny.ps1`, `ftp-haslo.txt`. Nowy plik konfiguracyjny (nieprzeznaczony na serwer) dopisać do wykluczeń w `deploy.yml`.
+- `deploy-lokalny.ps1` = tylko ścieżka awaryjna (ręczny wysył 4 plików wpisanych na sztywno; hasło w `ftp-haslo.txt`, którego nie ma w repo). Normalnie nieużywany.
 
 ## Twarde reguły
 
