@@ -153,19 +153,6 @@ a {
 
 .presentation-list {
   list-style: none;
-  padding-top: 14px;
-  position: relative;
-}
-
-.presentation-list::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 44px;
-  height: 4px;
-  background: var(--accent);
-  border-radius: 2px;
 }
 
 .presentation-list li {
