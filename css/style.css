@@ -215,6 +215,16 @@ a {
   background: #1d4ed8;
 }
 
+.hero-contact {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.hero-hours {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 .hero-photo {
   border-radius: 14px;
   box-shadow: 0 10px 30px rgba(26, 58, 82, 0.25);

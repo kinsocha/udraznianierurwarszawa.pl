@@ -15,6 +15,7 @@
 
 ## Twarde reguły
 
+0a. **NUMER-ZAŚLEPKA 123-456-789 (od 09.08.2026)**: numer w hero (`index.html`) jest FIKCYJNY, wstawiony na czas budowy. PRZED STARTEM strony podmienić na docelowy numer tej marki (user jeszcze go nie podał) — także w `tel:`. Przy starcie sprawdzić też sprzeczność: hero mówi „codziennie od 8 do 22", a title/teksty/FAQ mówią „całodobowo/24h" — user ma wybrać jedno.
 0. **STRONA W BUDOWIE – noindex (od 09.08.2026)**: w `<head>` w `index.html` jest `<meta name="robots" content="noindex, nofollow">`, żeby wersje robocze nie trafiały do Google. PRZY STARCIE STRONY (gotowe zdjęcia, treść zaakceptowana) tę linijkę trzeba USUNĄĆ – bez tego strona nigdy nie wejdzie do indeksu. Przy każdej rozmowie o „starcie", „publikacji", „indeksacji" tej strony PRZYPOMNIEĆ userowi o zdjęciu noindexu.
 
 1. **ZERO numeru 510 733 300** (udraznianiekanalizacji.eu) i **ZERO numeru 511 323 123** (i-hydraulik.pl) – nigdzie: ani w treści, ani w schema, ani w draftach. Rozdzielność marek jednego właściciela. Obecnie jedyny kontakt na stronie to e-mail hydraulikwarszawanet@gmail.com – nie dodawać żadnego telefonu bez wyraźnego polecenia.
