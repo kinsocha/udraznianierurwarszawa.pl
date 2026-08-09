@@ -15,6 +15,8 @@
 
 ## Twarde reguły
 
+0. **STRONA W BUDOWIE – noindex (od 09.08.2026)**: w `<head>` w `index.html` jest `<meta name="robots" content="noindex, nofollow">`, żeby wersje robocze nie trafiały do Google. PRZY STARCIE STRONY (gotowe zdjęcia, treść zaakceptowana) tę linijkę trzeba USUNĄĆ – bez tego strona nigdy nie wejdzie do indeksu. Przy każdej rozmowie o „starcie", „publikacji", „indeksacji" tej strony PRZYPOMNIEĆ userowi o zdjęciu noindexu.
+
 1. **ZERO numeru 510 733 300** (udraznianiekanalizacji.eu) i **ZERO numeru 511 323 123** (i-hydraulik.pl) – nigdzie: ani w treści, ani w schema, ani w draftach. Rozdzielność marek jednego właściciela. Obecnie jedyny kontakt na stronie to e-mail hydraulikwarszawanet@gmail.com – nie dodawać żadnego telefonu bez wyraźnego polecenia.
 2. **Nie mieszać marek** – nie przenosić treści, opinii ani elementów z udraznianiekanalizacji.eu, wukowarszawa.pl ani i-hydraulik.pl. Właściciel CELOWO pozycjonuje kilka własnych domen na te same frazy – wymóg to UNIKALNA treść (zero duplicate content między domenami), nie ostrzegać przed samą strategią.
 3. **Narracja w 1. osobie liczby pojedynczej** („pracuję", „podaję", „czyszczę") – jednoosobowa działalność, historia 8 lat w MPWiK. Nie zmieniać na „my"/„nasza firma".
