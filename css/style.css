@@ -58,33 +58,6 @@ a {
   white-space: nowrap;
 }
 
-.topbar {
-  background: var(--dark);
-  color: var(--white);
-  font-size: 16px;
-  padding: 8px 0;
-}
-
-.topbar-inner {
-  display: flex;
-  align-items: center;
-  gap: 6px 28px;
-  flex-wrap: wrap;
-}
-
-.topbar-address {
-  margin-right: auto;
-}
-
-.topbar a {
-  color: var(--white);
-  text-decoration: none;
-}
-
-.topbar a:hover {
-  text-decoration: underline;
-}
-
 .site-header {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
@@ -505,6 +478,10 @@ a {
   border: 0;
   border-top: 1px solid rgba(226, 232, 240, 0.25);
   margin: 10px 0;
+}
+
+.footer-line {
+  margin: 6px 0;
 }
 
 address {
