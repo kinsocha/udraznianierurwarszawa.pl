@@ -19,9 +19,11 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
+  overflow-x: hidden;
   font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
   font-size: 17px;
   line-height: 1.65;
