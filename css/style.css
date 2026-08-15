@@ -275,7 +275,7 @@ a {
   align-items: center;
   gap: 44px;
   margin-top: -210px;
-  transform: translate(70px, -20px);
+  transform: translate(70px, 0);
 }
 
 .equip-title {
