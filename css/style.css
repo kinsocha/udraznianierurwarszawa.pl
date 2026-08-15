@@ -536,6 +536,8 @@ address {
   .equip-grid {
     grid-template-columns: 1fr;
     gap: 24px;
+    margin-top: 0;
+    transform: none;
   }
 
   .equip-list {
