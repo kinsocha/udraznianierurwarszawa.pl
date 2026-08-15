@@ -16,7 +16,7 @@
 ## Twarde reguły
 
 0a. **Numer tej marki: 500 314 441** (zaślepka 123-456-789 podmieniona na docelowy numer ~15.08.2026). Numer jest w hero i w stopce, z `tel:+48500314441`.
-0. **STRONA W BUDOWIE – noindex (od 09.08.2026)**: w `<head>` w `index.html` jest `<meta name="robots" content="noindex, nofollow">`, żeby wersje robocze nie trafiały do Google. PRZY STARCIE STRONY (gotowe zdjęcia, treść zaakceptowana) tę linijkę trzeba USUNĄĆ – bez tego strona nigdy nie wejdzie do indeksu. Przy każdej rozmowie o „starcie", „publikacji", „indeksacji" tej strony PRZYPOMNIEĆ userowi o zdjęciu noindexu.
+0. **STRONA OTWARTA DLA ROBOTÓW (od 16.08.2026)**: `noindex, nofollow` (obecny 09–16.08.2026) został usunięty na polecenie usera – strona ma się indeksować. NIE dodawać ponownie bez wyraźnego polecenia. Nie ma `robots.txt` ani `.htaccess` – nic nie blokuje robotów.
 
 1. **ZERO numeru 510 733 300** (udraznianiekanalizacji.eu) i **ZERO numeru 511 323 123** (i-hydraulik.pl) – nigdzie: ani w treści, ani w schema, ani w draftach. Rozdzielność marek jednego właściciela. Kontakt na stronie: telefon 500 314 441 i adres Janinówka 11, 03-562 Warszawa (w stopce i hero).
 1a. **ZERO e-maila hydraulikwarszawanet@gmail.com** (od 15.08.2026, polecenie usera) – NIGDY nie używać tego adresu w tym projekcie: ani w treści strony, ani w stopce, ani w schema, ani w draftach. **E-mail tej marki to udraznianierurwarszawa@gmail.com** (w stopce od 15.08.2026).
