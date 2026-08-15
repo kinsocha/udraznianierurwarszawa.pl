@@ -34,7 +34,7 @@
 
 ## SEO
 
-10. Schema: `CreativeWorkSeries` + `aggregateRating` (NIE LocalBusiness). Już jest w `<head>` – przy edycji nie zmieniać typu.
+10. Schema: WYJĄTEK od reguły globalnej – na tej stronie NIE MA bloku JSON-LD `CreativeWorkSeries` + `aggregateRating` (usunięty 16.08.2026 na polecenie usera). Nie dodawać go ponownie. Reguła globalna (gwiazdki przez `CreativeWorkSeries`) obowiązuje nadal w pozostałych markach.
 11. Sekcja FAQ (`<details><summary>`) MUSI mieć lustrzany blok `FAQPage` JSON-LD – te same pytania i odpowiedzi w obu miejscach. Po każdej edycji FAQ zaktualizować OBA.
 12. Body text min 16px na mobile.
 13. Cennik jest JAWNY (tabela na stronie) – inaczej niż na udraznianiekanalizacji.eu. Nie ukrywać go.
